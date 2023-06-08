@@ -23,7 +23,7 @@ def predict_datapoint():
             Gender=request.form.get('Gender'),
             Married = request.form.get('Married'),
             Dependents = request.form.get('Dependents'),
-            Education = request.form.get('x'),
+            Education = request.form.get('Education'),
             Self_Employed = request.form.get('Self_Employed'),
             ApplicantIncome = float(request.form.get('ApplicantIncome')),
             CoapplicantIncome = float(request.form.get('CoapplicantIncome')),
@@ -36,9 +36,12 @@ def predict_datapoint():
         predict_pipeline=PredictPipeline()
         pred=predict_pipeline.predict(final_new_data)
 
-        results=round(pred[0],2)
+        if(pred[0]):
+            results = "Loan Approved"
+        else:
+            results = "Loan Rejected"    
 
-        return render_template('results.html',final_result=results)
+        return render_template('form.html',final_result=results)
 
 
 

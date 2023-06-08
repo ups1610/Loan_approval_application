@@ -1,96 +1,132 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>LoanStatus</title>
+    <style>
+        body{
+            background-image: url("{{url_for('static',filename='img/banner.webp')}}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 80vh; 
+        }
+    </style>
+</head>
 <body>
-<form action="{{url_for('predict_datapoint')}}" method="POST">
-    <div class="form-group">
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender">
-            <option value="" >Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
+    <section id="details">
+        <h1 class="heading">Get Your Loan Status</h1>
+        <form  action="{{url_for('predict_datapoint')}}" method="POST">
+            <div class="form">
+                <div class="form-group">
+                    <label for="Gender">Gender:</label>
+                    <select id="Gender" name="Gender" required>
+                        <option value="NaN" >Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                </div>
+            
+                <div class="form-group">
+                    <label for="Married">Married:</label>
+                    <select id="Married" name="Married" required>
+                        <option value="NaN" >Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                </div>
+
+                <div class="form-group">  
+                    <label for="Dependents">Dependents:</label>
+                    <select id="Dependents" name="Dependents" required>
+                        <option value="NaN" >Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3+">3</option>
+                        <option value="3+">Above</option>
+                      </select>
+                </div>
+            </div>
+            
+
+            <div class="form">
+                <div class="form-group">
+                    <label for="Education">Education:</label>
+                    <select id="Education" name="Education" required>
+                        <option value="NaN" >Select</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Not Graduate">Not Graduate</option>
+                      </select>
+                </div>
+              
+                <div class="form-group">
+                    <label for="Self_Employed">Self_Employed:</label>
+                    <select id="Self_Employed" name="Self_Employed" required>
+                        <option value="NaN" >Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                </div>
+              
+                <div class="form-group">
+                    <label for="ApplicantIncome">Applicant Income:</label>
+                    <input type="text" id="ApplicantIncome" name="ApplicantIncome" placeholder="Enter income eg 123.00" required>
+                </div>  
+            </div>
+            
+             <div class="form">
+                <div class="form-group">
+                    <label for="CoapplicantIncome">CoapplicantIncome:</label>
+                    <input type="text" id="CoapplicantIncome" name="CoapplicantIncome" placeholder="Enter income eg 123.00" required>
+                    </select>
+                  </div>
+                    
+                  <div class="form-group">
+                    <label for="LoanAmount">LoanAmount:</label>
+                    <input type="text" id="LoanAmount" name="LoanAmount" placeholder="Enter income eg 123.00" required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="Loan_Amount_Term">Loan_Amount_Term:</label>
+                      <input type="text" id="Loan_Amount_Term" name="Loan_Amount_Term" placeholder="Enter income eg 123.00" required>
+                  </div>
+             </div>      
+          
+        <div class="form">
+            <div class="form-group">
+                <label for="Credit_History">Credit_History:</label>
+                <select id="Credit_History" name="Credit_History" required>
+                    <option value="NaN" >Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="Property_Area">Property_Area:</label>
+                <select id="Property_Area" name="Property_Area" required>
+                    <option value="NaN" >Select</option>
+                    <option value="Urban">Urban</option>
+                    <option value="Rural">Rural</option>
+                    <option value="Semiurban">Semiurban</option>
+                  </select>
+            </div>
+            
+        </div>
+        
+        
+        
+        <div style="clear:both;"></div>
+          <input type="submit" value="Submit" class="button">
+        </form> 
+    </section>   
+    <div class="result">
+        <h1>{{final_result}}</h1>
     </div>
-
-    <div class="form-group">
-        <label for="Married">Married:</label>
-        <select id="Married" name="Married">
-            <option value="" >Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-    </div>
-
-    <div class="form-group">  
-        <label for="dependents">Dependents:</label>
-        <select id="dependents" name="dependents">
-            <option value="" >Select</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3+">3</option>
-            <option value="3+">Above</option>
-          </select>
-    </div>
-    
-    <div class="form-group">
-        <label for="Education">Education:</label>
-        <select id="Education" name="Education">
-            <option value="" >Select</option>
-            <option value="Graduate">Graduate</option>
-            <option value="Not Graduate">Not Graduate</option>
-          </select>
-    </div>
-  
-    <div class="form-group">
-        <label for="Self_Employed">Self Employed:</label>
-        <select id="Self_Employed" name="Self_Employed">
-            <option value="" >Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-    </div>
-  
-    <div class="form-group">
-        <label for="ApplicantIncome">Applicant Income:</label>
-        <input type="text" id="ApplicantIncome" name="ApplicantIncome" placeholder="Enter income eg 123.00">
-    </div>         
-  
-<div class="form-group">
-  <label for="CoapplicantIncome">CoapplicantIncome:</label>
-  <input type="text" id="CoapplicantIncome" name="CoapplicantIncome" placeholder="Enter income eg 123.00">
-  </select>
-</div>
-  
-<div class="form-group">
-  <label for="LoanAmount">LoanAmount:</label>
-  <input type="text" id="LoanAmount" name="LoanAmount" placeholder="Enter income eg 123.00">
-</div>
-
-<div class="form-group">
-    <label for="Loan_Amount_Term">Loan_Amount_Term:</label>
-    <input type="text" id="Loan_Amount_Term" name="Loan_Amount_Term" placeholder="Enter income eg 123.00">
-</div>
-
-<div class="form-group">
-    <label for="Credit_History">Credit_History:</label>
-    <select id="Credit_History" name="Credit_History">
-        <option value="" >Select</option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-</div>
-
-<div class="form-group">
-    <label for="Property_Area">Property_Area:</label>
-    <select id="Property_Area" name="Property_Area">
-        <option value="" >Select</option>
-        <option value="Urban">Urban</option>
-        <option value="Rural">Rural</option>
-        <option value="Semiurban">Semiurban</option>
-      </select>
-</div>
-
-
-<div style="clear:both;"></div>
-  <input type="submit" value="Submit">
-</form>
+         
 </body>
 </html>

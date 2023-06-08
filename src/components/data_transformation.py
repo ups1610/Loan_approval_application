@@ -53,6 +53,8 @@ class DataTransformation:
             train_df.drop(columns='Loan_ID',axis=1,inplace=True)
             test_df.drop(columns='Loan_ID',axis=1,inplace=True)
 
+            print(train_df.info())
+
             train_df,test_df = self.get_data_transformation(train_df,test_df)
 
             target_column_name = 'Loan_Status_Y'

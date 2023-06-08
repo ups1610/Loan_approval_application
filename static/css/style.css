@@ -1,0 +1,70 @@
+body{
+    background-image: "{{url_for('static',filename='img/banner.webp')}}";
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    text-align: center;
+    margin: auto;
+}
+#details h1{
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    margin-top: 40px;
+    color: #0d64b0;
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.form-group{
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    padding: 46px 47px 41px 27px;
+}
+select,input{
+    background-color: green;
+    color: white;
+    width: 150px;
+    height: 25px;
+
+}
+.white{
+    color: white;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+  }
+
+  .button{
+    background-color: transparent;
+    border-radius: 10px;
+    height: 30px;
+    color: black;
+    border: 2px solid #136dbc;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+
+  .button:hover{
+    border: 2px solid white;
+    cursor: pointer;
+  }
