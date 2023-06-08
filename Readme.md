@@ -1,5 +1,8 @@
 ## End to End ML Project
 
+![image](https://github.com/ups1610/Loan_approval_application/assets/75423160/d8922c21-f702-4b47-a8a0-ae9726eca35e)
+
+
 ### created a environment
 ```
 conda create -p venv python==3.8
